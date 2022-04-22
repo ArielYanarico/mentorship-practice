@@ -43,8 +43,15 @@ class App extends React.Component {
           className='test'
         />
         <Button 
-          onCLick={() => {}}
-          label='Click me!!!'
+          onClick={() => console.log('Clicked')}
+          label='Click me to change next button color!'
+          buttonType='normal'
+        />
+
+        <Button 
+          onClick={() => console.log('Clicked')}
+          label='I don`t do anything'
+          buttonType='success'
         />
       </div>
     )

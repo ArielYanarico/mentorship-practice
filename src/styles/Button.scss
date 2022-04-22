@@ -7,7 +7,43 @@
   cursor: pointer;
   border: 2px solid transparent;
 
-  background-color: rgba( $dark-highlight, .1 );
-  border-color: $dark-highlight;
-  color: $dark-highlight;
+  &.normal {
+    background-color: rgba( $dark-highlight, .1 );
+    border-color: $dark-highlight;
+    color: $dark-highlight;
+
+    &:hover {
+      background-color: $dark-highlight;
+      color: $light-highlight;
+    }
+  }
+
+  &.dark {
+    background-color: $dark-highlight;
+    border-color: $dark-highlight;
+    color: $light-highlight;
+
+    &:hover {
+      background-color: rgba( $dark-highlight, .1 );
+      color: $dark-highlight;
+    }
+  }
+
+  &.success {
+    background-color: rgba( $success-color, .1 );
+    border-color: $success-color;
+    color: $success-color;
+  }
+
+  &.warn {
+    background-color: rgba( $warn-color, .1 );
+    border-color: $warn-color;
+    color: $warn-color;
+  }
+
+  &.error {
+    background-color: rgba( $error-color, .1 );
+    border-color: $error-color;
+    color: $error-color;
+  }
 }
