@@ -1,7 +1,7 @@
-import { useRef, useEffect } from 'react'
-import logo from './logo.svg';
+import React/*, { useRef, useEffect }*/ from 'react'
 import Select from 'react-select';
-import './App.scss';
+import Button from './components/Button';
+import './styles/App.scss';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -9,12 +9,55 @@ const options = [
   { value: 'vanilla', label: 'Vanilla' }
 ];
 
-function App() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.selectRef = React.createRef();
+  }
+
+  componentDidMount() {
+    console.log('ref: ', this.selectRef.current.controlRef.childNodes);
+    this.selectRef.current.controlRef.parentNode.setAttribute('role', 'combobox');
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+        <Select 
+          ref={this.selectRef}
+          options={options} 
+          role='textbox'
+          className='test'
+        />
+        <Button 
+          onCLick={() => {}}
+          label='Click me!!!'
+        />
+      </div>
+    )
+  }
+}
+
+
+/*function App() {
   const selectRef = useRef()
 
   useEffect(() => {
-    console.log('ref: ', selectRef.current.controlRef/*.parentNode*/);
-    selectRef.current.controlRef.setAttribute('role', 'combobox2')
+    console.log('ref: ', selectRef.current.controlRef.parentNode);
+    selectRef.current.controlRef.parentNode.setAttribute('role', 'combobox');
   });
 
   return (
@@ -36,11 +79,11 @@ function App() {
       <Select 
         ref={selectRef}
         options={options} 
-        role='combobox'
+        role='textbox'
         className='test'
       />
     </div>
   );
-}
+}*/
 
 export default App;
