@@ -1,4 +1,4 @@
-import React/*, { useRef, useEffect }*/ from 'react'
+import React from 'react'
 import Select from 'react-select';
 import Button from '../components/Button';
 
@@ -30,8 +30,9 @@ class MyComponents extends React.Component {
   }
 
   render() {
-    const nextColor = (buttonTypes.indexOf(this.state.buttonType) < buttonTypes.length - 1)
-      ? buttonTypes[buttonTypes.indexOf(this.state.buttonType) + 1] 
+    const index = buttonTypes.indexOf(this.state.buttonType);
+    const nextColor = (index < buttonTypes.length - 1)
+      ? buttonTypes[index + 1] 
       : buttonTypes[0];
 
     return (
