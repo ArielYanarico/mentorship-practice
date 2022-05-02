@@ -4,10 +4,15 @@ import '../styles/Button.scss'
 class Button extends React.Component {
 
   render() {
-    const { label, onClick, buttonType } = this.props;
+    const { label, onClick, buttonType, type } = this.props;
 
     return (
-      <div className={`button ${buttonType}`} onClick={ onClick }>{ label }</div>
+      <input 
+        className={`button ${buttonType}`} 
+        onClick={ onClick } 
+        type={ type } 
+        value={ label } 
+      />
     )
   }
 }
