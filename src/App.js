@@ -3,26 +3,23 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import MyComponents from './pages/MyComponents';
 import './styles/App.scss';
+import Navigator from './components/Navigator';
 
+
+
+const navigatorProps = {
+  'links': ['/', '/my-components'],
+  'linkTexts': ['Home', 'My Components'],
+}
 
 class App extends React.Component {
+  
   render() {
+    
     return (
       <div className="App">
-
         <Router>
-
-          <nav>
-            <ul>
-              <li>
-                <Link to='/'>Home</Link>
-              </li>
-              <li>
-                <Link to='/my-components'>My Components</Link>
-              </li>
-            </ul>
-          </nav>
-
+          <Navigator link={ navigatorProps.links } textLink={ navigatorProps.linkTexts }></Navigator>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/my-components' element={<MyComponents />} />
