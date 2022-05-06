@@ -6,21 +6,19 @@ import './styles/App.scss';
 import Navigator from './components/Navigator';
 import Login from './pages/Login';
 
-
-
-const navigatorProps = {
-  'links': ['/', '/my-components'],
-  'linkTexts': ['Home', 'My Components'],
-}
+const links = [
+  {path:'/', text:'Home'},
+  {path:'/my-components', text:'My Components'},
+  {path:'/login', text:'Login'},
+]
 
 class App extends React.Component {
   
   render() {
-    
     return (
       <div className="App">
         <Router>
-          <Navigator link={ navigatorProps.links } textLink={ navigatorProps.linkTexts }></Navigator>
+          <Navigator links={ links } ></Navigator>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
