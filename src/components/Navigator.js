@@ -7,7 +7,7 @@ const Navigator = ({links}) => {
     <nav>
       <ul>
         {links.map((currentLink) => {
-          return <li><Link to={currentLink.path}>{currentLink.text}</Link></li>
+          return <li key={currentLink.text}><Link to={currentLink.path}>{currentLink.text}</Link></li>
         })}
       </ul>
     </nav>

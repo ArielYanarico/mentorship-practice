@@ -1,6 +1,7 @@
 import React from 'react'
 import Select from 'react-select';
 import Button from '../components/Button';
+import FocusableDiv from '../components/FocusableDiv';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -21,7 +22,7 @@ class MyComponents extends React.Component {
     super(props);
     this.selectRef = React.createRef();
     this.state = {
-      buttonType: buttonTypes[0]
+      buttonType: buttonTypes[0],
     };
   }
 
@@ -43,6 +44,8 @@ class MyComponents extends React.Component {
           role='textbox'
           className='test'
         />
+
+        <FocusableDiv onFocus={()=>{console.log('Focused!!!!')}}></FocusableDiv>
         
         <Button 
           onClick={() => this.setState({buttonType: nextColor}) }
