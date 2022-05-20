@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
+import withHistory from '../hocs/withHistory';
 
 class Login extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Login extends React.Component {
 
   async login ( event ) {
     event.preventDefault();
-    const response = await fetch('http://127.0.0.1:4000/users/login', {
+    const response = await fetch('https://fast-crag-62434.herokuapp.com/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -27,6 +28,9 @@ class Login extends React.Component {
       body: JSON.stringify(this.state)
     })
     console.log('RESPONSE ', response)
+    const responseBody = await response.body;
+    localStorage.setItem('token', responseBody.token);
+    this.props.navigate('/');
   }
 
   handleUsernameChange (event) {
@@ -59,4 +63,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withHistory(Login);

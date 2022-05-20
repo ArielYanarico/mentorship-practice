@@ -5,6 +5,7 @@ import MyComponents from './pages/MyComponents';
 import './styles/App.scss';
 import Navigator from './components/Navigator';
 import Login from './pages/Login';
+import PrivateRoute from './components/PrivatRoute';
 
 const links = [
   {path:'/', text:'Home'},
@@ -20,9 +21,9 @@ class App extends React.Component {
         <Router>
           <Navigator links={ links } ></Navigator>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<PrivateRoute><Home /></PrivateRoute>} />
             <Route path='/login' element={<Login />} />
-            <Route path='/my-components' element={<MyComponents />} />
+            <Route path='/my-components' element={ <PrivateRoute><MyComponents /></PrivateRoute> } />
           </Routes>
         </Router>
 
