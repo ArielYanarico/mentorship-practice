@@ -7,7 +7,6 @@ import withHistory from '../hocs/withHistory';
 const Navigator = ({links, navigate}) => {
   
   const handleLogout = () => {
-    console.log('pressed');
     localStorage.removeItem('token');
     navigate('/login');
   }

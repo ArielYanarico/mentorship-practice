@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../components/Button';
+import Spinner from '../components/Spinner';
 import TextInput from '../components/TextInput';
 import withHistory from '../hocs/withHistory';
 
@@ -8,29 +9,34 @@ class Login extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      hiddenSpinner: true
     }
-
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.login = this.login.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
-  
-
-  async login ( event ) {
+  async handleLogin ( event ) {
     event.preventDefault();
-    const response = await fetch('https://fast-crag-62434.herokuapp.com/users/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.state)
-    })
-    console.log('RESPONSE ', response)
-    const responseBody = await response.body;
-    localStorage.setItem('token', responseBody.token);
-    this.props.navigate('/');
+
+    this.setState({hiddenSpinner: false}, async () => {
+
+      const response = await fetch('https://fast-crag-62434.herokuapp.com/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.state)
+      })
+  
+      this.setState({hiddenSpinner: true});
+  
+      const responseBody = await response.body;
+      localStorage.setItem('token', responseBody.token);
+      this.props.navigate('/');
+
+    } );
   }
 
   handleUsernameChange (event) {
@@ -42,10 +48,9 @@ class Login extends React.Component {
   }
 
   render() {
-    
     return (
-      <div className='Login'>
-        <form onSubmit={this.login}>
+      <>
+        <form className='login' onSubmit={this.handleLogin}>
           <TextInput
             label='Username'
             onChange={this.handleUsernameChange}
@@ -58,7 +63,9 @@ class Login extends React.Component {
           />
           <Button label='Login' buttonType='normal' type='submit' />
         </form>
-      </div>
+
+        <Spinner hidden={this.state.hiddenSpinner}/>
+      </>
     )
   }
 }

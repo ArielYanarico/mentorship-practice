@@ -2,6 +2,7 @@ import React from 'react'
 import Select from 'react-select';
 import Button from '../components/Button';
 import FocusableDiv from '../components/FocusableDiv';
+import Spinner from '../components/Spinner';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -52,6 +53,8 @@ class MyComponents extends React.Component {
           label='Click me to change my color!'
           buttonType={this.state.buttonType}
         />
+
+        <Spinner></Spinner>
 
       </div>
     )
