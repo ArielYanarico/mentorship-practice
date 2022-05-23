@@ -10,7 +10,6 @@ class PrivateRoute extends React.Component {
 
     render(){
         const tokenStorage = localStorage.getItem('token')
-        console.log(tokenStorage);
         if (tokenStorage) {
             return(
                 <>

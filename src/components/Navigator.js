@@ -2,8 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from './Button';
 import '../styles/Navigator.scss'
+import withHistory from '../hocs/withHistory';
 
-const Navigator = ({links}) => {
+const Navigator = ({links, navigate}) => {
+  
+  const handleLogout = () => {
+    console.log('pressed');
+    localStorage.removeItem('token');
+    navigate('/login');
+  }
+
   return(
     <nav className='navigator'>
       <ul>
@@ -12,9 +20,9 @@ const Navigator = ({links}) => {
         })}
       </ul>
       
-      <Button label='Logout' />
+      <Button label='Logout' onClick={ handleLogout }/>
     </nav>
   )
 }
 
-export default Navigator;
+export default withHistory(Navigator);
