@@ -31,11 +31,17 @@ class Login extends React.Component {
       })
   
       this.setState({hiddenSpinner: true});
-  
-      const responseBody = await response.body;
-      localStorage.setItem('token', responseBody.token);
-      this.props.navigate('/');
 
+      if (response.ok) {
+        const responseBody = await response.body;
+        localStorage.setItem('token', responseBody.token);
+        this.props.navigate('/');
+      }
+      else{
+        const responseMsg = await response.text();
+        console.log(responseMsg);
+        this.props.navigate('/error', {state: {errorCode: response.status, errorMsg: responseMsg}});
+      }
     } );
   }
 
