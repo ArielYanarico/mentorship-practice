@@ -10,8 +10,8 @@ import PrivateRoute from './components/PrivateRoute';
 
 const links = [
   {path:'/', text:'Home'},
-  {path:'/my-components', text:'My Components'},
   {path:'/login', text:'Login'},
+  {path:'/my-components', text:'My Components'},
 ]
 
 class App extends React.Component {
