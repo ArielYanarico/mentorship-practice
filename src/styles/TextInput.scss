@@ -3,8 +3,12 @@
 .textInput{
   font-size: large;
 
+  label{
+    display: block;
+  }
+
   input[type='text'] {
-    padding: 10px;
+    padding: 8px;
     border: 2px solid $dark-highlight;
     border-radius: $button-radius;
     font-size: large;

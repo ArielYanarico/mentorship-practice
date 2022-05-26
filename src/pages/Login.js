@@ -33,11 +33,11 @@ class Login extends React.Component {
       this.setState({hiddenSpinner: true});
 
       if (response.ok) {
-        const responseBody = await response.body;
+        const responseBody = await response.json();
         localStorage.setItem('token', responseBody.token);
         this.props.navigate('/');
       }
-      else{
+      else {
         const responseMsg = await response.text();
         console.log(responseMsg);
         this.props.navigate('/error', {state: {errorCode: response.status, errorMsg: responseMsg}});
