@@ -18,7 +18,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <TextArea className='textPost' placeholder="what's going on?" onChange={ this.handlePostChange } value={ this.state.postText }></TextArea>
+        <TextArea className='textPost' placeHolder="what's going on?" onChange={ this.handlePostChange } value={ this.state.postText }></TextArea>
       </div>
     )
   }

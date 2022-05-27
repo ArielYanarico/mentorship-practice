@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import FocusableDiv from '../components/FocusableDiv';
 import Spinner from '../components/Spinner';
 import TextArea from '../components/TextArea';
+import PostArea from '../layouts/PostArea';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -55,9 +56,9 @@ class MyComponents extends React.Component {
           buttonType={this.state.buttonType}
         />
 
-        <Spinner></Spinner>
-        <TextArea className='test-text' placeHolder='Testing'></TextArea>
-
+        <Spinner hidden="true"></Spinner>
+        <TextArea className='test-text' placeHolder={ 'Testing...' }></TextArea>
+        <PostArea></PostArea>
       </div>
     )
   }
