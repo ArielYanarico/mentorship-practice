@@ -5,10 +5,13 @@ import '../styles/TextArea.scss';
 
 
 const TextArea = ({ className='text', placeHolder, onChange, value }) =>{
+
+    const handleOnChange = (e) => onChange(e.target.value);
+
     return (
         <textarea className={ className } 
         placeholder={ placeHolder } 
-        onChange={ onChange } value={value}
+        onChange={ handleOnChange } value={value}
         ></textarea> 
     )
 }
