@@ -3,6 +3,7 @@ import Select from 'react-select';
 import Button from '../components/Button';
 import FocusableDiv from '../components/FocusableDiv';
 import Spinner from '../components/Spinner';
+import TextArea from '../components/TextArea';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -55,6 +56,7 @@ class MyComponents extends React.Component {
         />
 
         <Spinner></Spinner>
+        <TextArea className='test-text' placeHolder='Testing'></TextArea>
 
       </div>
     )
