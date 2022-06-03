@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Home.scss';
-import TextArea from '../components/TextArea';
+import PostArea from '../layouts/PostArea';
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <TextArea className='textPost' placeHolder="what's going on?" onChange={ this.handlePostChange } value={ this.state.postText }></TextArea>
+        <PostArea className='textPost' placeHolder="what's going on?" onChange={ this.handlePostChange } value={ this.state.postText }></PostArea>
       </div>
     )
   }

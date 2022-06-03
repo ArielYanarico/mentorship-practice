@@ -10,7 +10,7 @@ import '../styles/PostArea.scss';
 const PostArea = () =>{
 
     const [postText, setPostText] = useState('');
-
+    const labelOptions = [{'value': 1, 'label': 'friends'}, {'value': 2, 'label': 'public'}]
 
     return(
         <div className="text-wrapper">
@@ -18,11 +18,14 @@ const PostArea = () =>{
                 className='test-text' 
                 placeHolder='What is going on?' 
                 value={ postText } 
-                onChange={setPostText}>
+                onChange={setPostText}
+            >
             </TextArea>
             <div className="row">
-                <Select></Select>             
-                <Button></Button>
+                <Select 
+                options={ labelOptions }
+                defaultValue={ labelOptions[0]}></Select>             
+                <Button label={ 'Publish' }></Button>
             </div>
             
 

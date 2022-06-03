@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types'; 
 import '../styles/TextArea.scss';
 
-
-
 const TextArea = ({ className='text', placeHolder, onChange, value }) =>{
 
     const handleOnChange = (e) => onChange(e.target.value);
