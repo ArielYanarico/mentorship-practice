@@ -7,30 +7,30 @@ import '../styles/PostArea.scss';
 
 
 
-const PostArea = () =>{
+const PostArea = () => {
 
-    const [postText, setPostText] = useState('');
-    const labelOptions = [{'value': 1, 'label': 'friends'}, {'value': 2, 'label': 'public'}]
+  const [postText, setPostText] = useState('');
+  const labelOptions = [{'value': 1, 'label': 'friends'}, {'value': 2, 'label': 'public'}]
 
-    return(
-        <div className="text-wrapper">
-            <TextArea 
-                className='test-text' 
-                placeHolder='What is going on?' 
-                value={ postText } 
-                onChange={setPostText}
-            >
-            </TextArea>
-            <div className="row">
-                <Select 
-                options={ labelOptions }
-                defaultValue={ labelOptions[0]}></Select>             
-                <Button label={ 'Publish' }></Button>
-            </div>
-            
+  return (
+    <div className="text-wrapper">
+      <TextArea 
+        className='test-text' 
+        placeHolder='What is going on?' 
+        value={ postText } 
+        onChange={setPostText}
+      >
+      </TextArea>
+      <div className="row">
+        <Select 
+          options={ labelOptions }
+          defaultValue={ labelOptions[0]}></Select>             
+        <Button label={ 'Publish' }></Button>
+      </div>
 
-        </div>
-    );
+
+    </div>
+  );
 }
 
 export default PostArea;
