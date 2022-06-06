@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from './Button.js'
 import PropTypes from 'prop-types';
+import '../styles/Post.scss';
 
 const Post = ({ text, } ) =>{
 
@@ -9,8 +10,8 @@ const Post = ({ text, } ) =>{
       <div className="post-box">
         <p className="post-text">{ text }</p>
       </div>
-      <Button value={ 'Edit' } ></Button>
-      <Button value={ 'Delete' } ></Button>
+      <Button label={ 'Edit' } ></Button>
+      <Button label={ 'Delete' } ></Button>
     </div>
   )    
 }
