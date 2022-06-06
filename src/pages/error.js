@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 
 const Error = () => {
     
-    const { state } = useLocation();
-    console.log("state: ", state);
+  const { state } = useLocation();
+  console.log("state: ", state);
   return(
     <>
       <div className="error-heading">

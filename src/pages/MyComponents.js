@@ -4,7 +4,8 @@ import Button from '../components/Button';
 import FocusableDiv from '../components/FocusableDiv';
 import Spinner from '../components/Spinner';
 import TextArea from '../components/TextArea';
-import PostArea from '../layouts/PostArea';
+import PostBox from '../layouts/PostBox';
+import PostList from '../layouts/PostList';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -58,7 +59,8 @@ class MyComponents extends React.Component {
 
         <Spinner hidden="true"></Spinner>
         <TextArea className='test-text' placeHolder={ 'Testing...' }></TextArea>
-        <PostArea></PostArea>
+        <PostBox></PostBox>
+        <PostList></PostList>
       </div>
     )
   }

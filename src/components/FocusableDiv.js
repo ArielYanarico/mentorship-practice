@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 const FocusableDiv = ({ focus, onFocus, onClick }) => {
   const focusDiv = useRef()
@@ -11,10 +12,16 @@ const FocusableDiv = ({ focus, onFocus, onClick }) => {
 
   return (
     <div ref={focusDiv} onFocus={onFocus} onClick={onClick} tabIndex={0}>
-      I'm a focus div
+      Im a focus div
     </div>
   )
 
+}
+
+FocusableDiv.propTypes = {
+  focus: PropTypes.bool,
+  onFocus: PropTypes.func,
+  onClick: PropTypes.func,
 }
 
 export default FocusableDiv

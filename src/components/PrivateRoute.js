@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 class PrivateRoute extends React.Component {
   render() {
@@ -17,6 +18,10 @@ class PrivateRoute extends React.Component {
       )
     }
   }
+}
+
+PrivateRoute.propTypes = {
+  children: PropTypes.any,
 }
 
 export default PrivateRoute;

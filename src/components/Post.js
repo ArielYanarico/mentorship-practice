@@ -4,15 +4,19 @@ import PropTypes from 'prop-types';
 
 const Post = ({ text, } ) =>{
 
-    return(
-        <div className="row">
-            <div className="post-box">
-                <p clasName="post-text">{ text }</p>
-            </div>
-            <Button value={ 'Edit' } ></Button>
-            <Button value={ 'Delete' } ></Button>
-        </div>
-    )    
+  return(
+    <div className="row">
+      <div className="post-box">
+        <p className="post-text">{ text }</p>
+      </div>
+      <Button value={ 'Edit' } ></Button>
+      <Button value={ 'Delete' } ></Button>
+    </div>
+  )    
+}
+
+Post.propTypes={
+  text: PropTypes.string,
 }
 
 export default Post;

@@ -3,6 +3,7 @@ import Button from '../components/Button';
 import Spinner from '../components/Spinner';
 import TextInput from '../components/TextInput';
 import withHistory from '../hocs/withHistory';
+import PropTypes from 'prop-types';
 
 class Login extends React.Component {
   constructor(props) {
@@ -74,6 +75,10 @@ class Login extends React.Component {
       </>
     )
   }
+}
+
+Login.propTypes ={
+  navigate: PropTypes.func,
 }
 
 export default withHistory(Login);

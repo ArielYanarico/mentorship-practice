@@ -1,5 +1,6 @@
 import React from "react";
 import '../styles/TextInput.scss'
+import PropTypes from 'prop-types';
 
 class TextInput extends React.Component {
 
@@ -13,6 +14,12 @@ class TextInput extends React.Component {
       </div>
     )
   }
+}
+
+TextInput.propTypes = {
+  label: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
 }
 
 export default TextInput;

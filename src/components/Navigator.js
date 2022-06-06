@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from './Button';
 import '../styles/Navigator.scss'
 import withHistory from '../hocs/withHistory';
+import PropTypes from 'prop-types'
 
 const Navigator = ({links, navigate}) => {
   
@@ -22,6 +23,11 @@ const Navigator = ({links, navigate}) => {
       <Button label='Logout' onClick={ handleLogout }/>
     </nav>
   )
+}
+
+Navigator.propTypes = {
+  links: PropTypes.array,
+  navigate: PropTypes.func,
 }
 
 export default withHistory(Navigator);

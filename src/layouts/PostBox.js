@@ -7,7 +7,7 @@ import '../styles/PostArea.scss';
 
 
 
-const PostArea = () => {
+const PostBox = () => {
 
   const [postText, setPostText] = useState('');
   const labelOptions = [{'value': 1, 'label': 'friends'}, {'value': 2, 'label': 'public'}]
@@ -33,4 +33,4 @@ const PostArea = () => {
   );
 }
 
-export default PostArea;
+export default PostBox;
