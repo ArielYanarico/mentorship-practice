@@ -1,8 +1,6 @@
 .row {
 	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
+	flex-direction: column;
 	justify-content: flex-start;
-	align-items: stretch;
-	align-content: stretch;
+	align-items: baseline;
 }

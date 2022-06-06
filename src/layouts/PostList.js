@@ -7,7 +7,7 @@ const PostList = () => {
   return(
     <div>
       <ul>
-        <li><Post text={ 'testing' }></Post></li>
+        <li><Post text={ 'testingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtesting' }></Post></li>
         <li><Post text={ 'testing 2' }></Post></li>
       </ul>
     </div>

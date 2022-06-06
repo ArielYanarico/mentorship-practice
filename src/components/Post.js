@@ -6,12 +6,14 @@ import '../styles/Post.scss';
 const Post = ({ text, } ) =>{
 
   return(
-    <div className="row">
-      <div className="post-box">
-        <p className="post-text">{ text }</p>
+    <div className='row'>
+      <div className="post-text">
+        <p>{ text }</p>
       </div>
-      <Button label={ 'Edit' } ></Button>
-      <Button label={ 'Delete' } ></Button>
+      <div className='post-buttons'>
+        <Button label={ 'Edit' } ></Button>
+        <Button label={ 'Delete' } ></Button>
+      </div>
     </div>
   )    
 }
