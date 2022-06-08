@@ -20,11 +20,10 @@ class Home extends React.Component {
     const response = await fetch(
       "https://fast-crag-62434.herokuapp.com/posts",
       {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(this.state),
       }
     );
     return response;
