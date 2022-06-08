@@ -1,17 +1,23 @@
-import React from 'react';
-//import PropTypes from 'prop-types';
-import Post from '../components/Post';
+import React from "react";
+import PropTypes from 'prop-types';
+import Post from "../components/Post";
 
-
-const PostList = () => {
-  return(
+const PostList = ({ posts=[] }) => {
+  return (
     <div>
       <ul>
-        <li><Post text={ 'testingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtestingtesting' }></Post></li>
-        <li><Post text={ 'testing 2' }></Post></li>
+        {posts.map((currentPost) => (
+          <li key= { currentPost._id }>
+            <Post text={ currentPost.text }></Post>
+          </li>
+        ))}
       </ul>
     </div>
-  )
+  );
+};
+
+PostList.propTypes = {
+  posts: PropTypes.array,
 }
 
 export default PostList;

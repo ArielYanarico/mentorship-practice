@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import '../styles/Post.scss';
 
 const Post = ({ text, } ) =>{
-
+  console.log(text);
   return(
     <div className='row'>
       <div className="post-text">
