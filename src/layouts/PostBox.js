@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import TextArea from '../components/TextArea';
 import Button from '../components/Button';
@@ -8,10 +8,10 @@ import '../styles/PostBox.scss';
 
 
 
-const PostBox = ({ onClick }) => {
+const PostBox = ({ onClick, onPublishSelect, postText, setPostText }) => {
 
-  const [postText, setPostText] = useState('');
   const labelOptions = [{'value': 1, 'label': 'friends'}, {'value': 2, 'label': 'public'}]
+
 
   return (
     <div className="text-wrapper">
@@ -25,8 +25,9 @@ const PostBox = ({ onClick }) => {
       <div className="row">
         <Select 
           options={ labelOptions }
-          defaultValue={ labelOptions[0]}></Select>             
-        <Button label={ 'Publish' } onClick={ onClick }></Button>
+          defaultValue={ labelOptions[0]}
+          onChange={ onPublishSelect }></Select>             
+        <Button label={ 'Publish' } onClick={ onClick } ></Button>
       </div>
 
 
@@ -36,6 +37,9 @@ const PostBox = ({ onClick }) => {
 
 PostBox.propTypes = {
   onClick: PropTypes.func,
+  onPublishSelect: PropTypes.func,
+  postText: PropTypes.string,
+  setPostText: PropTypes.func,
 }
 
 export default PostBox;

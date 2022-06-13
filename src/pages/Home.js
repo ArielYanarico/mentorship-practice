@@ -13,10 +13,11 @@ class Home extends React.Component {
     };
     this.handlePostChange = this.handlePostChange.bind(this);
     this.handlePostCreate = this.handlePostCreate.bind(this);
+    this.onPublishSelect = this.onPublishSelect.bind(this);
   }
 
   handlePostChange = (e) => {
-    this.setState({ postText: e.target.value });
+    this.setState({ postText: e });
   };
 
   handlePostCreate = async () =>{
@@ -26,7 +27,7 @@ class Home extends React.Component {
       'isPublic': this.state.postIsPublic,
     };
 
-    /*const response = */await fetch(
+    const response = await fetch(
       "https://fast-crag-62434.herokuapp.com/posts",
       {
         method: "POST",
@@ -36,6 +37,8 @@ class Home extends React.Component {
         body: JSON.stringify(postBody),
       }
     )
+    const jsonResponse = await response.json();
+    this.setState({ posts: [...this.state.posts, jsonResponse] });
   }
 
   fetchPost = async () => {
@@ -58,15 +61,22 @@ class Home extends React.Component {
     this.setState({posts: responseArray });
   }
 
+  onPublishSelect = (e) =>{
+    const selectedOption = e.label;
+    selectedOption === 'public'? this.setState({ postIsPublic: true }): this.setState({ postIsPublic: false });
+  } 
+
   render() {
     return (
       <div>
         <PostBox
           className="textPost"
           placeHolder="what's going on?"
-          onChange={this.handlePostChange}
+          postText={ this.state.postText }
+          setPostText={ this.handlePostChange }
           value={this.state.postText}
           onClick={this.handlePostCreate }
+          onPublishSelect={ this.onPublishSelect }
         ></PostBox>
         <PostList posts={ this.state.posts }></PostList>
       </div>
