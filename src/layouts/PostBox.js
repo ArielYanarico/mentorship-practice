@@ -5,9 +5,6 @@ import Button from '../components/Button';
 import Select from 'react-select';
 import '../styles/PostBox.scss';
 
-
-
-
 const PostBox = ({ onClick, onPublishSelect, postText, setPostText }) => {
 
   const labelOptions = [{'value': 1, 'label': 'friends'}, {'value': 2, 'label': 'public'}]
@@ -29,7 +26,6 @@ const PostBox = ({ onClick, onPublishSelect, postText, setPostText }) => {
           onChange={ onPublishSelect }></Select>             
         <Button label={ 'Publish' } onClick={ onClick } ></Button>
       </div>
-
 
     </div>
   );

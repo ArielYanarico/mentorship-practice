@@ -1,8 +1,9 @@
-import React from "react";
+import React, { createRef } from "react";
 import "../styles/Home.scss";
-import Modal from 'react-modal';
 import PostBox from "../layouts/PostBox";
 import PostList from "../layouts/PostList";
+import PostModal from "../layouts/PostModal";
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -12,9 +13,13 @@ class Home extends React.Component {
       hiddenSpinner: true,
       postIsPublic: false,
     };
+
+    this.modalRef = createRef();
+
     this.handlePostChange = this.handlePostChange.bind(this);
     this.handlePostCreate = this.handlePostCreate.bind(this);
-    this.onPublishSelect = this.onPublishSelect.bind(this);
+    this.handlePublishSelect = this.handlePublishSelect.bind(this);
+    this.handleClickEdit = this.handleClickEdit.bind(this);
   }
 
   handlePostChange = (e) => {
@@ -62,12 +67,17 @@ class Home extends React.Component {
     this.setState({posts: responseArray });
   }
 
-  onPublishSelect = (e) =>{
+  handlePublishSelect = (e) =>{
     const selectedOption = e.label;
     selectedOption === 'public'? this.setState({ postIsPublic: true }): this.setState({ postIsPublic: false });
   } 
 
+  handleClickEdit = () => {
+    this.modalRef.current.open()
+  }
+
   render() {
+
     return (
       <div>
         <PostBox
@@ -77,9 +87,10 @@ class Home extends React.Component {
           setPostText={ this.handlePostChange }
           value={this.state.postText}
           onClick={this.handlePostCreate }
-          onPublishSelect={ this.onPublishSelect }
+          onPublishSelect={ this.handlePublishSelect }
         ></PostBox>
-        <PostList posts={ this.state.posts }></PostList>
+        <PostList posts={ this.state.posts } onClickEdit={this.handleClickEdit}></PostList>
+        <PostModal ref={this.modalRef} />
       </div>
     );
   }
