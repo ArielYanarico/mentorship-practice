@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Home.scss";
+import Modal from 'react-modal';
 import PostBox from "../layouts/PostBox";
 import PostList from "../layouts/PostList";
 class Home extends React.Component {
