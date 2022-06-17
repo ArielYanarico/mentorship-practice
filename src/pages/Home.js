@@ -3,6 +3,7 @@ import "../styles/Home.scss";
 import PostBox from "../layouts/PostBox";
 import PostList from "../layouts/PostList";
 import PostModal from "../layouts/PostModal";
+import PostContext from '../contexts/PostContext';
 
 class Home extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class Home extends React.Component {
     this.setState({ postText: e });
   };
 
-  handlePostCreate = async () =>{
+  handlePostCreate = async () => {
     const postBody = {
       'text': this.state.postText,
       'user': '62870c4aac9bb81a2fe49fc1',
@@ -64,13 +65,13 @@ class Home extends React.Component {
   async componentDidMount() {
     const response = await this.fetchPost();
     const responseArray = await response.json();
-    this.setState({posts: responseArray });
+    this.setState({ posts: responseArray });
   }
 
-  handlePublishSelect = (e) =>{
+  handlePublishSelect = (e) => {
     const selectedOption = e.label;
-    selectedOption === 'public'? this.setState({ postIsPublic: true }): this.setState({ postIsPublic: false });
-  } 
+    selectedOption === 'public' ? this.setState({ postIsPublic: true }) : this.setState({ postIsPublic: false });
+  }
 
   handleClickEdit = () => {
     this.modalRef.current.open()
@@ -83,14 +84,18 @@ class Home extends React.Component {
         <PostBox
           className="textPost"
           placeHolder="what's going on?"
-          postText={ this.state.postText }
-          setPostText={ this.handlePostChange }
+          postText={this.state.postText}
+          setPostText={this.handlePostChange}
           value={this.state.postText}
-          onClick={this.handlePostCreate }
-          onPublishSelect={ this.handlePublishSelect }
+          onClick={this.handlePostCreate}
+          onPublishSelect={this.handlePublishSelect}
         ></PostBox>
-        <PostList posts={ this.state.posts } onClickEdit={this.handleClickEdit}></PostList>
-        <PostModal ref={this.modalRef} />
+        <PostList posts={this.state.posts} onClickEdit={this.handleClickEdit}></PostList>
+        <PostContext.Consumer>
+          {({ currentPost }) => (
+            <PostModal ref={this.modalRef} currentPost={currentPost} />
+          )}
+        </PostContext.Consumer>
       </div>
     );
   }

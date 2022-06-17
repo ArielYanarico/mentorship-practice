@@ -1,20 +1,27 @@
 import React, { forwardRef, useState, useImperativeHandle } from 'react';
 import Modal from 'react-modal';
+import PropTypes from 'prop-types';
 
-const PostModal = forwardRef((_props, ref) => {
+const PostModal = forwardRef((props, ref) => {
   const [isOpened, setOpened] = useState(false)
 
   const open = () => { setOpened(true); };
   const close = () => { setOpened(false); };
 
-  useImperativeHandle(ref, () => ({open, close, }));
+  useImperativeHandle(ref, () => ({ open, close, }));
+
+  console.log('PROPS, ', props)
 
   return (
-    <Modal isOpen={isOpened}>
-      <div>Hello I am a modal</div>
+    <Modal isOpen={isOpened} ariaHideApp={false}>
+      <div>Hello, {props.currentPost.text}</div>
     </Modal>
   )
 })
+
+PostModal.propTypes = {
+  currentPost: PropTypes.object,
+}
 
 PostModal.displayName = 'AuxModal';
 
