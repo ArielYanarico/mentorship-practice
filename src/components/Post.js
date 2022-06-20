@@ -1,9 +1,11 @@
 import React from 'react';
 import Button from './Button.js'
 import PropTypes from 'prop-types';
+import { useCurrentPost } from '../contexts/PostContext'
 import '../styles/Post.scss';
 
-const Post = ({ post, onClickEdit, setCurrentPost }) => {
+const Post = ({ post, onClickEdit }) => {
+  const {setCurrentPost} = useCurrentPost()
 
   const handleClickEdit = () => {
     setCurrentPost(post)
@@ -26,7 +28,6 @@ const Post = ({ post, onClickEdit, setCurrentPost }) => {
 Post.propTypes = {
   post: PropTypes.object,
   onClickEdit: PropTypes.func,
-  setCurrentPost: PropTypes.func,
 }
 
 export default Post;

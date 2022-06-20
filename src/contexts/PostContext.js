@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 const PostContext = React.createContext({ currentPost: {}, setCurrentPost: () => { } })
@@ -16,6 +16,11 @@ export const PostProvider = ({ children }) => {
 
 PostProvider.propTypes = {
   children: PropTypes.any
+}
+
+export const useCurrentPost = () => {
+  const currentPostHook = useContext(PostContext);
+  return currentPostHook;
 }
 
 export default PostContext;

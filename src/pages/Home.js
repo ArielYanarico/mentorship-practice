@@ -3,7 +3,6 @@ import "../styles/Home.scss";
 import PostBox from "../layouts/PostBox";
 import PostList from "../layouts/PostList";
 import PostModal from "../layouts/PostModal";
-import PostContext from '../contexts/PostContext';
 
 class Home extends React.Component {
   constructor(props) {
@@ -91,11 +90,7 @@ class Home extends React.Component {
           onPublishSelect={this.handlePublishSelect}
         ></PostBox>
         <PostList posts={this.state.posts} onClickEdit={this.handleClickEdit}></PostList>
-        <PostContext.Consumer>
-          {({ currentPost }) => (
-            <PostModal ref={this.modalRef} currentPost={currentPost} />
-          )}
-        </PostContext.Consumer>
+        <PostModal ref={this.modalRef} />
       </div>
     );
   }

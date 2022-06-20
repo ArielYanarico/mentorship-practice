@@ -1,27 +1,25 @@
 import React, { forwardRef, useState, useImperativeHandle } from 'react';
 import Modal from 'react-modal';
-import PropTypes from 'prop-types';
+import Button from '../components/Button';
+import { useCurrentPost } from '../contexts/PostContext'
 
-const PostModal = forwardRef((props, ref) => {
-  const [isOpened, setOpened] = useState(false)
+const PostModal = forwardRef((_props, ref) => {
+  const [isOpened, setOpened] = useState(false);
+
+  const {currentPost} = useCurrentPost();
 
   const open = () => { setOpened(true); };
   const close = () => { setOpened(false); };
 
   useImperativeHandle(ref, () => ({ open, close, }));
 
-  console.log('PROPS, ', props)
-
   return (
     <Modal isOpen={isOpened} ariaHideApp={false}>
-      <div>Hello, {props.currentPost.text}</div>
+      <div>Hello, {currentPost.text}</div>
+      <Button label='Cancel' onClick={close}></Button>
     </Modal>
   )
 })
-
-PostModal.propTypes = {
-  currentPost: PropTypes.object,
-}
 
 PostModal.displayName = 'AuxModal';
 
