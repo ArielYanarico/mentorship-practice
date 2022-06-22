@@ -4,7 +4,7 @@ import Spinner from '../components/Spinner';
 import TextInput from '../components/TextInput';
 import withHistory from '../hocs/withHistory';
 import PropTypes from 'prop-types';
-
+import withCurrentUser from '../hocs/withCurrentUser';
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -37,6 +37,7 @@ class Login extends React.Component {
         const responseBody = await response.json();
         localStorage.setItem('token', responseBody.token);
         this.props.navigate('/');
+        this.props.setCurrentUser(responseBody.user);
       }
       else {
         const responseMsg = await response.text();
@@ -79,6 +80,7 @@ class Login extends React.Component {
 
 Login.propTypes ={
   navigate: PropTypes.func,
+  setCurrentUser: PropTypes.func,
 }
 
-export default withHistory(Login);
+export default withCurrentUser(withHistory(Login));

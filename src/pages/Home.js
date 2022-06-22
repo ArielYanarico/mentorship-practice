@@ -3,6 +3,8 @@ import "../styles/Home.scss";
 import PostBox from "../layouts/PostBox";
 import PostList from "../layouts/PostList";
 import PostModal from "../layouts/PostModal";
+import withCurrentUser from "../hocs/withCurrentUser";
+import PropTypes from 'prop-types';
 
 class Home extends React.Component {
   constructor(props) {
@@ -62,6 +64,7 @@ class Home extends React.Component {
   };
 
   async componentDidMount() {
+    console.log(this.props.currentUser);
     const response = await this.fetchPost();
     const responseArray = await response.json();
     this.setState({ posts: responseArray });
@@ -96,4 +99,8 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+Home.propTypes = {
+  currentUser: PropTypes.string,
+}
+
+export default withCurrentUser(Home);
